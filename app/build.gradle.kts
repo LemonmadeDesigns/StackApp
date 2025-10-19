@@ -79,3 +79,20 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
+
+// Auto-commit task: Runs after successful builds
+tasks.register<Exec>("autoCommit") {
+    group = "git"
+    description = "Auto-commit changes after successful build"
+    workingDir = projectDir.parentFile
+    commandLine("sh", "auto-commit.sh")
+}
+
+// Optional: Automatically run auto-commit after assembleDebug succeeds
+tasks.named("assembleDebug") {
+    doLast {
+        println("✅ Build successful! Running auto-commit...")
+        // Uncomment the line below to enable automatic commits after every successful build
+        // tasks.named("autoCommit").get().exec()
+    }
+}
