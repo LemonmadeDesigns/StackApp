@@ -88,11 +88,10 @@ tasks.register<Exec>("autoCommit") {
     commandLine("sh", "auto-commit.sh")
 }
 
-// Optional: Automatically run auto-commit after assembleDebug succeeds
-tasks.named("assembleDebug") {
-    doLast {
-        println("✅ Build successful! Running auto-commit...")
-        // Uncomment the line below to enable automatic commits after every successful build
-        // tasks.named("autoCommit").get().exec()
+// Auto-commit after successful builds (Semi-Automatic Mode)
+// This runs automatically after assembleDebug succeeds
+afterEvaluate {
+    tasks.named("assembleDebug").configure {
+        finalizedBy("autoCommit")
     }
 }
