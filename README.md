@@ -24,18 +24,18 @@ StackApp2 is an interactive educational app that demonstrates how a **Stack data
 
 Each digit has a distinct, carefully chosen color for easy visualization:
 
-| Digit | Color | Hex Code |
-|-------|-------|----------|
-| 0 | 🔴 Red | #E57373 |
-| 1 | 🩷 Pink | #F06292 |
-| 2 | 🟣 Purple | #BA68C8 |
-| 3 | 💜 Deep Purple | #9575CD |
-| 4 | 🔵 Indigo | #7986CB |
-| 5 | 💙 Blue | #64B5F6 |
-| 6 | 🌊 Light Blue | #4FC3F7 |
-| 7 | 🌿 Teal | #4DB6AC |
-| 8 | 💚 Green | #81C784 |
-| 9 | 🧡 Orange | #FFB74D |
+| Digit | Color          | Hex Code |
+|-------|----------------|----------|
+| 0     | 🔴 Red         | #E57373  |
+| 1     | 🩷 Pink        | #F06292  |
+| 2     | 🟣 Purple      | #BA68C8  |
+| 3     | 💜 Deep Purple | #9575CD  |
+| 4     | 🔵 Indigo      | #7986CB  |
+| 5     | 💙 Blue        | #64B5F6  |
+| 6     | 🌊 Light Blue  | #4FC3F7  |
+| 7     | 🌿 Teal        | #4DB6AC  |
+| 8     | 💚 Green       | #81C784  |
+| 9     | 🧡 Orange      | #FFB74D  |
 
 ## 🎮 How to Use
 
@@ -86,12 +86,12 @@ The app supports three simple commands:
 
 ### Common Errors
 
-| Input | Error | Correct Format |
-|-------|-------|----------------|
-| `push8` | ❌ Format Error: Missing space | `push 8` |
-| `push 10` | ❌ Value must be single digit (0-9) | `push 1` then `push 0` |
-| `push` | ❌ Invalid push format | `push 5` |
-| `pop` (on empty stack) | ❌ Stack is EMPTY | First use `push X` |
+| Input                  | Error                               | Correct Format         |
+|------------------------|-------------------------------------|------------------------|
+| `push8`                | ❌ Format Error: Missing space       | `push 8`               |
+| `push 10`              | ❌ Value must be single digit (0-9)  | `push 1` then `push 0` |
+| `push`                 | ❌ Invalid push format               | `push 5`               |
+| `pop` (on empty stack) | ❌ Stack is EMPTY                    | First use `push X`     |
 
 ## 🏗️ How It Works
 
@@ -409,7 +409,6 @@ This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
-- Built with assistance from [Claude Code](https://claude.com/claude-code)
 - Inspired by data structure visualization needs in computer science education
 - Color palette inspired by Material Design guidelines
 
