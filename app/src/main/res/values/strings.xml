@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">StackApp</string>
+    <string name="title">StackApp (LIFO, Max Size 3)</string>
+    <string name="hint_commands">Enter commands: “push X”, “pop”, or “quit”. X must be 0–9.</string>
+    <string name="hint_example">e.g., push 3</string>
+    <string name="btn_submit">Submit</string>
+    <string name="stack_empty">Stack [ ]</string>
+    <string name="output_label">Output:</string>
+    <string name="examples">\nExamples:\n• push 3\n• pop\n• quit</string>
+</resources>
