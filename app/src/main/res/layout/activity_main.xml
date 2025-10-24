@@ -15,7 +15,7 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title"
+            android:text="Stack Application"
             android:textStyle="bold"
             android:textSize="24sp"
             android:textColor="#212121"
@@ -25,12 +25,12 @@
             android:id="@+id/tvHint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint_commands"
+            android:text="Enter a digit (0-9) and use the buttons below"
             android:textSize="14sp"
             android:textColor="#666666"
             android:paddingBottom="16dp" />
 
-        <!-- Visual Stack Display Area -->
+        <!-- Input Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,86 +43,65 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stack Visualization"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="#212121"
-                android:paddingBottom="12dp" />
-
-            <!-- Stack blocks container (blocks will be added here dynamically) -->
-            <LinearLayout
-                android:id="@+id/stackContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="bottom"
-                android:minHeight="200dp"
-                android:background="#FAFAFA"
-                android:padding="8dp">
-
-                <TextView
-                    android:id="@+id/tvStackEmpty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Stack is empty"
-                    android:textColor="#999999"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- Command Input Section -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="16dp"
-            android:elevation="2dp"
-            android:layout_marginBottom="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Command Input"
+                android:text="Input"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:textColor="#212121"
                 android:paddingBottom="8dp" />
 
+            <EditText
+                android:id="@+id/etInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter value (0-9)"
+                android:inputType="number"
+                android:maxLength="1"
+                android:importantForAutofill="no"
+                android:minHeight="48dp"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="12dp"
+                android:textSize="16sp"
+                android:background="#F5F5F5" />
+
+            <!-- Button Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:gravity="center">
 
-                <EditText
-                    android:id="@+id/etCommand"
+                <Button
+                    android:id="@+id/btnPush"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/hint_example"
-                    android:imeOptions="actionDone"
-                    android:singleLine="true"
-                    android:inputType="text"
-                    android:importantForAutofill="no"
-                    android:minHeight="48dp"
-                    android:paddingVertical="12dp"
-                    android:paddingHorizontal="12dp"
+                    android:text="Push"
                     android:textSize="16sp"
-                    android:background="#F5F5F5" />
+                    android:layout_marginEnd="4dp" />
 
                 <Button
-                    android:id="@+id/btnSubmit"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnPop"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_submit"
+                    android:layout_weight="1"
+                    android:text="Pop"
                     android:textSize="16sp"
-                    android:layout_marginStart="8dp" />
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/btnQuit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Quit"
+                    android:textSize="16sp"
+                    android:layout_marginStart="4dp" />
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Output Log Section -->
+        <!-- Stack Display Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -135,32 +114,63 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Output"
+                android:text="Stack Display"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:textColor="#212121"
                 android:paddingBottom="8dp" />
 
             <TextView
-                android:id="@+id/tvLog"
+                android:id="@+id/tvStackDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/output_label"
+                android:minHeight="80dp"
+                android:text="Stack: [ ]\nStatus: Empty"
                 android:textSize="14sp"
                 android:textColor="#424242"
-                android:lineSpacingExtra="4dp" />
+                android:background="#F5F5F5"
+                android:padding="12dp"
+                android:fontFamily="monospace"
+                android:lineSpacingExtra="4dp"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false" />
         </LinearLayout>
 
-        <!-- Examples Section -->
-        <TextView
-            android:id="@+id/tvExamples"
+        <!-- Error/Output Section -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/examples"
-            android:textSize="12sp"
-            android:textColor="#666666"
-            android:paddingTop="4dp"
-            android:paddingBottom="8dp" />
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="16dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Errors / Messages"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#212121"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvErrors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="60dp"
+                android:text="Ready"
+                android:textSize="14sp"
+                android:textColor="#424242"
+                android:background="#FFF9C4"
+                android:padding="12dp"
+                android:lineSpacingExtra="4dp"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
