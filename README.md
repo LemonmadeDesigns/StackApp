@@ -297,10 +297,6 @@ The auto-commit script:
 **Example commit message:**
 ```
 Auto-commit: Successful build at 2025-10-19 12:30:45
-
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
-
-Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 ### Auto-Commit Script Location

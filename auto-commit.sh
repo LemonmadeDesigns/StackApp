@@ -23,11 +23,7 @@ COMMIT_MSG="Auto-commit: Successful build at $TIMESTAMP"
 git add -A
 
 # Commit with timestamp
-git commit -m "$COMMIT_MSG
-
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
-
-Co-Authored-By: Claude <noreply@anthropic.com>"
+git commit -m "$COMMIT_MSG"
 
 echo "✅ Changes committed successfully!"
 echo "📤 To push to GitHub, run: git push"
