@@ -1,4 +1,4 @@
-# StackApp2 - Visual Stack Data Structure
+# StackApp - Visual Stack Data Structure
 
 A beautiful Android application that implements and visualizes the Stack (LIFO - Last In First Out) data structure with colored blocks. Built with Kotlin and Android SDK.
 
@@ -8,7 +8,7 @@ A beautiful Android application that implements and visualizes the Stack (LIFO -
 
 ## 📱 About The App
 
-StackApp2 is an interactive educational app that demonstrates how a **Stack data structure** works. Instead of showing boring text like `Stack [5, 3, 7]`, it displays beautiful colored blocks that stack visually from bottom to top - just like a real stack!
+StackApp is an interactive educational app that demonstrates how a **Stack data structure** works. Instead of showing boring text like `Stack [5, 3, 7]`, it displays beautiful colored blocks that stack visually from bottom to top - just like a real stack!
 
 ### ✨ Features
 
@@ -194,11 +194,11 @@ graph LR
 
 ```bash
 # Clone the repository
-git clone https://github.com/LemonmadeDesigns/StackApp2.git
+git clone https://github.com/LemonmadeDesigns/StackApp.git
 
 # Open in Android Studio
-cd StackApp2
-# File -> Open -> Select StackApp2 folder
+cd StackApp
+# File -> Open -> Select StackApp folder
 
 # Build and run
 ./gradlew assembleDebug
@@ -344,7 +344,7 @@ git push
 ## 📂 Project Structure
 
 ```
-StackApp2/
+StackApp/
 ├── app/
 │   ├── src/
 │   │   ├── main/
@@ -401,7 +401,7 @@ This project is licensed under the MIT License.
 
 **LemonmadeDesigns**
 - GitHub: [@LemonmadeDesigns](https://github.com/LemonmadeDesigns)
-- Repository: [StackApp2](https://github.com/LemonmadeDesigns/StackApp2)
+- Repository: [StackApp](https://github.com/LemonmadeDesigns/StackApp)
 
 ## 🙏 Acknowledgments
 
