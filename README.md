@@ -846,6 +846,19 @@ graph TD
 
 ### UI Layout Breakdown:
 
+<table>
+<tr>
+<td width="50%">
+
+**📱 Actual App Screenshot**
+
+<img src="stack_app.png" alt="Stack App Screenshot" width="100%"/>
+
+</td>
+<td width="50%">
+
+**📊 UI Structure Diagram**
+
 ```mermaid
 flowchart TB
     subgraph UI["📱 Stack Application Screen"]
@@ -885,6 +898,10 @@ flowchart TB
     style StackText fill:#F5F5F5
     style ErrorText fill:#FFF9C4
 ```
+
+</td>
+</tr>
+</table>
 
 ---
 
