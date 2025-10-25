@@ -1272,8 +1272,8 @@ flowchart TB
 
         subgraph Input["Input Section (White Card)"]
             Label1["<b>Input</b>"]
-            TextField["┌─────────────────────────┐<br/>│ Enter value (0-9)       │<br/>└─────────────────────────┘"]
-            Buttons["┌──────┐ ┌──────┐ ┌──────┐<br/>│ PUSH │ │ POP  │ │ QUIT │<br/>└──────┘ └──────┘ └──────┘"]
+            TextField["┌──────────────────────────────┐<br/>│  Enter value (0-9)           │<br/>└──────────────────────────────┘"]
+            Buttons["┌────────┐   ┌────────┐   ┌────────┐<br/>│  PUSH  │   │  POP   │   │  QUIT  │<br/>└────────┘   └────────┘   └────────┘"]
         end
 
         subgraph Display["Stack Display (White Card)"]
