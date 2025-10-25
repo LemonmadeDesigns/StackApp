@@ -818,24 +818,230 @@ Once the build completes, your Stack Application will open on the emulator!
 2. **Expected Result**:
    - Errors/Messages shows: `Error: Stack is EMPTY. Cannot pop`
 
-### Test Case 7: Invalid Input
+### Test Case 7: Invalid Input - Letter
 
-1. Try entering a letter like `A` and click **Push**
+1. Type a letter like `a` or `A` or `x` and click **Push**
 2. **Expected Result**:
-   - The input field should only accept numbers (0-9)
-   - If somehow entered, you'll see: `Error: Value must be a single digit (0-9)`
+   - Errors/Messages shows: `Error: Value must be a single digit (0-9)`
+   - Input is cleared
+   - Stack remains unchanged
 
-### Test Case 8: Empty Input
+### Test Case 8: Invalid Input - Special Character
+
+1. Type a special character like `!` or `@` or `#` and click **Push**
+2. **Expected Result**:
+   - Errors/Messages shows: `Error: Value must be a single digit (0-9)`
+   - Input is cleared
+   - Stack remains unchanged
+
+### Test Case 9: Empty Input
 
 1. Leave input field empty and click **Push**
 2. **Expected Result**:
    - Errors/Messages shows: `Error: Please enter a value (0-9)`
+   - Stack remains unchanged
 
-### Test Case 9: Quit Application
+### Test Case 10: Quit Application
 
 1. Click the **Quit** button
 2. **Expected Result**:
    - The application closes
+
+---
+
+## 9.1. Comprehensive Error Testing Guide
+
+The app includes robust error handling and validation. This section provides detailed test cases to verify all error messages display correctly in the **Errors/Messages** textbox.
+
+### Error Testing Overview
+
+All errors and exceptions are displayed in the yellow **"Errors / Messages"** section at the bottom of the app. The app validates:
+- ✅ Empty input
+- ✅ Invalid characters (letters, symbols)
+- ✅ Stack overflow (trying to push when full)
+- ✅ Stack underflow (trying to pop when empty)
+
+---
+
+### Complete Error Test Sequence
+
+Follow these steps to test **all** error conditions:
+
+#### **Step 1: Test Empty Input Error**
+
+**Action:**
+1. Ensure the input field is **completely empty**
+2. Click the **PUSH** button
+
+**Expected:**
+- 🟡 Errors/Messages displays: `Error: Please enter a value (0-9)`
+- Stack Display shows: `Stack: [ ]`, `Status: Empty`
+- Stack remains unchanged
+
+---
+
+#### **Step 2: Test Invalid Character - Letter**
+
+**Action:**
+1. Type any letter: `a`, `b`, `x`, `A`, `Z`
+2. Click the **PUSH** button
+
+**Expected:**
+- 🟡 Errors/Messages displays: `Error: Value must be a single digit (0-9)`
+- Input field is NOT cleared (you can see what you typed)
+- Stack remains unchanged
+
+**Examples to try:**
+- Lowercase: `a`, `b`, `c`, `d`, `e`
+- Uppercase: `A`, `B`, `C`, `D`, `E`
+
+---
+
+#### **Step 3: Test Invalid Character - Special Characters**
+
+**Action:**
+1. Type any special character: `!`, `@`, `#`, `$`, `%`, `*`, `.`, `-`
+2. Click the **PUSH** button
+
+**Expected:**
+- 🟡 Errors/Messages displays: `Error: Value must be a single digit (0-9)`
+- Input field is NOT cleared
+- Stack remains unchanged
+
+**Examples to try:**
+- Symbols: `!`, `@`, `#`, `$`, `%`
+- Punctuation: `.`, `,`, `;`, `:`
+- Math: `+`, `-`, `*`, `/`
+
+---
+
+#### **Step 4: Test Stack Underflow - Pop Empty Stack**
+
+**Action:**
+1. Ensure stack is empty (Stack Display shows `[ ]`)
+2. Click the **POP** button
+
+**Expected:**
+- 🟡 Errors/Messages displays: `Error: Stack is EMPTY. Cannot pop`
+- Stack Display shows: `Stack: [ ]`, `Status: Empty`
+
+---
+
+#### **Step 5: Test Stack Overflow - Push to Full Stack**
+
+**Action:**
+1. Push three values to fill the stack:
+   - Type `5`, click **PUSH**
+   - Type `3`, click **PUSH**
+   - Type `7`, click **PUSH**
+2. Stack is now **FULL** (Stack Display shows: `[5 3 7]`, `Status: Full`)
+3. Try to push a fourth value: Type `9`, click **PUSH**
+
+**Expected:**
+- 🟡 Errors/Messages displays: `Error: Stack is FULL. Cannot push 9`
+- Stack Display shows: `Stack: [5 3 7]`, `Status: Full`
+- The value `9` is **NOT** added to the stack
+
+---
+
+#### **Step 6: Test Space Character**
+
+**Action:**
+1. Press the **spacebar** to enter a space character
+2. Click the **PUSH** button
+
+**Expected:**
+- 🟡 Errors/Messages displays: `Error: Please enter a value (0-9)`
+- (Space is trimmed, treated as empty input)
+
+---
+
+### Error Message Reference Table
+
+| Test Scenario | Input | Action | Expected Error Message |
+|---------------|-------|--------|----------------------|
+| Empty Input | *(empty)* | Push | `Error: Please enter a value (0-9)` |
+| Letter Input | `a`, `A`, `x`, `Z` | Push | `Error: Value must be a single digit (0-9)` |
+| Special Char | `!`, `@`, `#`, `$` | Push | `Error: Value must be a single digit (0-9)` |
+| Space Input | ` ` (space) | Push | `Error: Please enter a value (0-9)` |
+| Pop Empty Stack | - | Pop | `Error: Stack is EMPTY. Cannot pop` |
+| Push Full Stack | `9` | Push | `Error: Stack is FULL. Cannot push 9` |
+
+---
+
+### Success Message Reference
+
+Valid operations display **success messages** (not errors):
+
+| Operation | Message Format | Example |
+|-----------|---------------|---------|
+| Successful Push | `Success: X pushed to stack` | `Success: 5 pushed to stack` |
+| Successful Pop | `Success: X popped from stack` | `Success: 7 popped from stack` |
+
+---
+
+### Complete Test Script
+
+Run through this sequence to test **all** error conditions in order:
+
+```
+1. Click PUSH (empty)              → "Error: Please enter a value (0-9)"
+2. Type "a", click PUSH            → "Error: Value must be a single digit (0-9)"
+3. Type "!", click PUSH            → "Error: Value must be a single digit (0-9)"
+4. Click POP (empty stack)         → "Error: Stack is EMPTY. Cannot pop"
+5. Type "5", click PUSH            → "Success: 5 pushed to stack"
+6. Type "3", click PUSH            → "Success: 3 pushed to stack"
+7. Type "7", click PUSH            → "Success: 7 pushed to stack"
+8. Type "9", click PUSH (full)     → "Error: Stack is FULL. Cannot push 9"
+9. Click POP                       → "Success: 7 popped from stack"
+10. Click POP                      → "Success: 3 popped from stack"
+11. Click POP                      → "Success: 5 popped from stack"
+12. Click POP (empty again)        → "Error: Stack is EMPTY. Cannot pop"
+```
+
+After completing this sequence, you will have tested:
+- ✅ 4 different error types
+- ✅ 6 total error messages
+- ✅ 6 successful operations
+- ✅ All input validation logic
+- ✅ All stack boundary conditions
+
+---
+
+### Visual Indicators
+
+When testing, watch for these visual cues:
+
+**Errors/Messages Box Colors:**
+- 🟡 **Yellow Background** (`#FFF9C4`) - Always visible for messages
+- 🔴 **"Error:" prefix** - Indicates validation failure
+- 🟢 **"Success:" prefix** - Indicates successful operation
+
+**Stack Display Updates:**
+- Shows current contents: `Stack: [5 3 7]`
+- Shows status: `Empty`, `Normal (2/3)`, or `Full`
+- Updates in real-time after each operation
+
+---
+
+### Input Field Behavior
+
+**Important Notes:**
+- The input field uses `inputType="text"` to allow testing of invalid characters
+- `maxLength="1"` restricts input to a single character
+- The app validates input programmatically (not just via input type)
+- This design allows comprehensive error handling testing
+
+---
+
+### Debugging Failed Tests
+
+If an error message doesn't appear:
+
+1. **Check the Errors/Messages box** - It's the yellow section at the bottom
+2. **Verify you clicked the correct button** - PUSH for input errors, POP for stack errors
+3. **Look at Logcat** (in Android Studio) for runtime errors
+4. **Rebuild the app** - Go to **Build > Clean Project**, then **Build > Rebuild Project**
 
 ---
 
