@@ -1056,26 +1056,26 @@ graph TD
 
 ```mermaid
 flowchart TB
-    subgraph UI["📱 Stack Application Screen"]
+    subgraph UI["Stack Application Screen"]
         direction TB
 
-        subgraph Header["🏷️ Header"]
+        subgraph Header["Header"]
             Title["<b>Stack Application</b>"]
             Hint["Enter a digit (0-9) and use the buttons below"]
         end
 
-        subgraph Input["📥 Input Section (White Card)"]
+        subgraph Input["Input Section (White Card)"]
             Label1["<b>Input</b>"]
             TextField["┌─────────────────────────┐<br/>│ Enter value (0-9)       │<br/>└─────────────────────────┘"]
             Buttons["┌──────┐ ┌──────┐ ┌──────┐<br/>│ PUSH │ │ POP  │ │ QUIT │<br/>└──────┘ └──────┘ └──────┘"]
         end
 
-        subgraph Display["📊 Stack Display (White Card)"]
+        subgraph Display["Stack Display (White Card)"]
             Label2["<b>Stack Display</b>"]
             StackText["┌─────────────────────────┐<br/>│ Stack: [ ]              │<br/>│ Status: Empty           │<br/>└─────────────────────────┘<br/>(Gray Background)"]
         end
 
-        subgraph Messages["⚠️ Errors/Messages (White Card)"]
+        subgraph Messages["Errors/Messages (White Card)"]
             Label3["<b>Errors / Messages</b>"]
             ErrorText["┌─────────────────────────┐<br/>│ Ready                   │<br/>└─────────────────────────┘<br/>(Yellow Background)"]
         end
