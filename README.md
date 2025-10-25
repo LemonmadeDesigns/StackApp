@@ -1041,18 +1041,18 @@ graph TD
 
 ### UI Layout Breakdown:
 
-<table>
-<tr>
-<td width="50%">
+#### 📱 Actual App Screenshot
 
-**📱 Actual App Screenshot**
+<div align="center">
+  <img src="stack_app.png" alt="Stack App Screenshot" width="400"/>
+  <p><em>The Stack Application running on Android emulator</em></p>
+</div>
 
-<img src="stack_app.png" alt="Stack App Screenshot" width="100%"/>
+---
 
-</td>
-<td width="50%">
+#### 📊 UI Structure Diagram
 
-**📊 UI Structure Diagram**
+<div align="center">
 
 ```mermaid
 flowchart TB
@@ -1094,9 +1094,9 @@ flowchart TB
     style ErrorText fill:#FFF9C4
 ```
 
-</td>
-</tr>
-</table>
+<p><em>Visual breakdown of the app's UI components and hierarchy</em></p>
+
+</div>
 
 ---
 
