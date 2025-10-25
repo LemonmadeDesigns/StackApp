@@ -2,6 +2,60 @@
 
 This guide will walk you through creating a Stack Application for Android from scratch, including environment setup, project creation, coding, and running the app.
 
+> 📦 **Zero External Dependencies** • 🏗️ **Built from Scratch** • 🎯 **Pure Android SDK**
+
+---
+
+## 📋 Overview
+
+This is a minimal Android application that demonstrates the **Stack (LIFO)** data structure with a clean Material Design interface. The app is built entirely from scratch without any external third-party libraries - using only the official Android SDK framework.
+
+### ✨ Key Features
+
+- 🚫 **No External Libraries** - Only official Android framework components
+- 📱 **Material Design UI** - Clean, modern interface following Material Design principles
+- 🔧 **Custom Stack Implementation** - Written from scratch without using built-in collections
+- 🎨 **XML Layouts** - Traditional Android Views (no Jetpack Compose)
+- ✅ **Complete Validation** - Input validation and error handling
+- 📊 **Real-time Updates** - Live stack visualization with status indicators
+
+---
+
+## 🛠️ Tech Stack & Dependencies
+
+### Core Technologies
+- **Language**: Kotlin
+- **UI Framework**: Android Views (XML layouts)
+- **Build System**: Gradle with Kotlin DSL
+- **Min SDK**: API 24 (Android 7.0 Nougat)
+- **Target SDK**: API 35
+
+### Dependencies
+
+This app uses **ONLY** the official Android framework libraries (not third-party):
+
+```kotlin
+dependencies {
+    // Official Android framework libraries
+    implementation("androidx.core:core-ktx")        // Android core utilities
+    implementation("androidx.appcompat:appcompat")  // AppCompatActivity & Material components
+
+    // Testing libraries (optional)
+    testImplementation("junit:junit")
+    androidTestImplementation("androidx.test.ext:junit")
+    androidTestImplementation("androidx.test.espresso:espresso-core")
+}
+```
+
+> **Note**: `androidx.core` and `androidx.appcompat` are part of the official Android SDK maintained by Google. They provide backward compatibility and standard Android components. These are NOT external third-party libraries.
+
+### What We're NOT Using
+- ❌ No Jetpack Compose
+- ❌ No external UI libraries
+- ❌ No third-party dependencies
+- ❌ No Material Components library (using built-in XML attributes only)
+- ❌ No data structure libraries (Stack built from scratch)
+
 ---
 
 ## Table of Contents
@@ -108,6 +162,50 @@ Android Studio will:
 4. Build the project
 
 You'll see a progress bar at the bottom. Wait until it says "Build Successful" or "Gradle sync finished".
+
+### Step 2.4: Configure Minimal Dependencies (Important!)
+
+By default, Android Studio may include unnecessary dependencies. Let's clean them up:
+
+1. Open `app/build.gradle.kts`
+2. Find the `android { }` block and **remove** the Compose-related sections:
+
+```kotlin
+// ❌ REMOVE these lines if they exist:
+buildFeatures {
+    compose = true
+}
+
+composeOptions {
+    kotlinCompilerExtensionVersion = "1.5.14"
+}
+```
+
+3. In the `dependencies { }` block, **replace** all dependencies with only these minimal ones:
+
+```kotlin
+dependencies {
+    // Only these two official Android libraries
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+
+    // Testing libraries (optional - can be removed if not testing)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+}
+```
+
+4. **Delete** the `ui/theme` folder if it exists:
+   - Right-click on `app/src/main/java/com/example/stackapp/ui/`
+   - Select **Delete**
+   - This folder contains unused Compose theme files
+
+5. Click **Sync Now** in the notification bar that appears
+
+6. Build the project: **Build > Rebuild Project**
+
+> **Why?** This ensures we're only using the minimal Android framework libraries without any external dependencies or unused code.
 
 ---
 
@@ -808,6 +906,103 @@ Once the build completes, your Stack Application will open on the emulator!
 - **Maximum Size**: 3 elements
 - **Valid Values**: Integers from 0 to 9
 - **Data Structure**: LIFO (Last In, First Out)
+
+---
+
+## 🎨 Material Design Principles
+
+This app follows **Material Design** guidelines using only XML attributes (no Material Components library):
+
+### Color Palette
+
+```mermaid
+graph LR
+    A[🎨 App Colors] --> B[Background: #F5F5F5<br/>Light Gray]
+    A --> C[Cards: #FFFFFF<br/>White]
+    A --> D[Text: #212121<br/>Dark Gray]
+    A --> E[Hints: #666666<br/>Medium Gray]
+    A --> F[Errors: #FFF9C4<br/>Light Yellow]
+    A --> G[Stack Display: #F5F5F5<br/>Light Gray]
+
+    style A fill:#2196F3,color:#fff
+    style B fill:#F5F5F5,color:#000
+    style C fill:#FFFFFF,color:#000,stroke:#DDD
+    style D fill:#212121,color:#fff
+    style E fill:#666666,color:#fff
+    style F fill:#FFF9C4,color:#000
+    style G fill:#F5F5F5,color:#000
+```
+
+### Design Elements
+
+| Element | Material Design Principle | Implementation |
+|---------|--------------------------|----------------|
+| **Cards** | Elevation & Shadows | `android:elevation="2dp"` |
+| **Spacing** | 8dp Grid System | `android:padding="16dp"` |
+| **Typography** | Roboto Font Family | `android:textSize="24sp"` (title)<br/>`android:textSize="16sp"` (body) |
+| **Input Fields** | Clear Visual Hierarchy | `android:minHeight="48dp"`<br/>`android:hint="..."` |
+| **Buttons** | Touch Target Size | `android:minHeight="48dp"`<br/>`android:layout_weight="1"` |
+| **Colors** | Neutral Palette | Light gray background<br/>White cards<br/>Dark text |
+| **Feedback** | Visual States | Yellow background for messages<br/>Gray for display |
+
+### Material Design Layout Structure
+
+```
+┌─────────────────────────────────────────┐
+│  🏠 App Container (#F5F5F5 - Light Gray) │
+│  ┌───────────────────────────────────┐  │
+│  │  📄 Card 1: Input Section         │  │
+│  │  (White, elevation: 2dp)          │  │
+│  │  • Text Field (48dp height)       │  │
+│  │  • Button Row (equal weight)      │  │
+│  └───────────────────────────────────┘  │
+│  ┌───────────────────────────────────┐  │
+│  │  📄 Card 2: Stack Display         │  │
+│  │  (White, elevation: 2dp)          │  │
+│  │  • Read-only display area         │  │
+│  └───────────────────────────────────┘  │
+│  ┌───────────────────────────────────┐  │
+│  │  📄 Card 3: Errors/Messages       │  │
+│  │  (White, elevation: 2dp)          │  │
+│  │  • Yellow message box             │  │
+│  └───────────────────────────────────┘  │
+└─────────────────────────────────────────┘
+```
+
+### XML Attributes Used (No External Library!)
+
+All Material Design effects are achieved using standard Android XML attributes:
+
+```xml
+<!-- Card Elevation -->
+android:elevation="2dp"
+
+<!-- Material Spacing (8dp grid) -->
+android:padding="16dp"
+android:layout_marginBottom="16dp"
+
+<!-- Typography -->
+android:textSize="24sp"          <!-- Headlines -->
+android:textSize="16sp"          <!-- Body text -->
+android:textStyle="bold"         <!-- Emphasis -->
+
+<!-- Colors -->
+android:textColor="#212121"      <!-- Primary text -->
+android:textColor="#666666"      <!-- Secondary text -->
+android:background="#FFFFFF"     <!-- Card background -->
+android:background="#F5F5F5"     <!-- Screen background -->
+android:background="#FFF9C4"     <!-- Warning/Message background -->
+
+<!-- Touch Targets (Material minimum: 48dp) -->
+android:minHeight="48dp"
+
+<!-- Material Input Fields -->
+android:inputType="number"
+android:maxLength="1"
+android:hint="Enter value (0-9)"
+```
+
+> **Note**: All Material Design effects are achieved through native Android XML attributes. No Material Components library (`com.google.android.material`) is required!
 
 ---
 
