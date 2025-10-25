@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter value (0-9)"
-                android:inputType="number"
+                android:inputType="text"
                 android:maxLength="1"
                 android:importantForAutofill="no"
                 android:minHeight="48dp"
