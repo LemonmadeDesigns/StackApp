@@ -811,6 +811,83 @@ Once the build completes, your Stack Application will open on the emulator!
 
 ---
 
+## Application UI Structure
+
+Here's a visual representation of the app's user interface:
+
+```mermaid
+graph TD
+    A[Stack Application] --> B[Title & Instructions]
+    A --> C[Input Section]
+    A --> D[Stack Display Section]
+    A --> E[Errors/Messages Section]
+
+    B --> B1["Stack Application<br/>Enter a digit 0-9"]
+
+    C --> C1[Text Input Field]
+    C --> C2[Button Row]
+    C2 --> C3[PUSH Button]
+    C2 --> C4[POP Button]
+    C2 --> C5[QUIT Button]
+
+    D --> D1["Stack: [ ]<br/>Status: Empty"]
+
+    E --> E1["Ready<br/>(Yellow Background)"]
+
+    style A fill:#2196F3,color:#fff
+    style B fill:#E3F2FD,color:#000
+    style C fill:#FFF,color:#000,stroke:#333
+    style D fill:#F5F5F5,color:#000,stroke:#333
+    style E fill:#FFF9C4,color:#000,stroke:#333
+    style C3 fill:#9E9E9E,color:#000
+    style C4 fill:#9E9E9E,color:#000
+    style C5 fill:#9E9E9E,color:#000
+```
+
+### UI Layout Breakdown:
+
+```mermaid
+flowchart TB
+    subgraph UI["📱 Stack Application Screen"]
+        direction TB
+
+        subgraph Header["🏷️ Header"]
+            Title["<b>Stack Application</b>"]
+            Hint["Enter a digit (0-9) and use the buttons below"]
+        end
+
+        subgraph Input["📥 Input Section (White Card)"]
+            Label1["<b>Input</b>"]
+            TextField["┌─────────────────────────┐<br/>│ Enter value (0-9)       │<br/>└─────────────────────────┘"]
+            Buttons["┌──────┐ ┌──────┐ ┌──────┐<br/>│ PUSH │ │ POP  │ │ QUIT │<br/>└──────┘ └──────┘ └──────┘"]
+        end
+
+        subgraph Display["📊 Stack Display (White Card)"]
+            Label2["<b>Stack Display</b>"]
+            StackText["┌─────────────────────────┐<br/>│ Stack: [ ]              │<br/>│ Status: Empty           │<br/>└─────────────────────────┘<br/>(Gray Background)"]
+        end
+
+        subgraph Messages["⚠️ Errors/Messages (White Card)"]
+            Label3["<b>Errors / Messages</b>"]
+            ErrorText["┌─────────────────────────┐<br/>│ Ready                   │<br/>└─────────────────────────┘<br/>(Yellow Background)"]
+        end
+    end
+
+    Header --> Input
+    Input --> Display
+    Display --> Messages
+
+    style UI fill:#F5F5F5,stroke:#333,stroke-width:3px
+    style Header fill:#FAFAFA,stroke:none
+    style Input fill:#FFF,stroke:#DDD,stroke-width:2px
+    style Display fill:#FFF,stroke:#DDD,stroke-width:2px
+    style Messages fill:#FFF,stroke:#DDD,stroke-width:2px
+    style StackText fill:#F5F5F5
+    style ErrorText fill:#FFF9C4
+```
+
+---
+
 ## Congratulations!
 
 You have successfully created and run a Stack Application for Android from scratch! This application demonstrates:
