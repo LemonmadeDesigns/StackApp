@@ -417,7 +417,7 @@ Replace the entire contents of `activity_main.xml` with:
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter value (0-9)"
-                android:inputType="number"
+                android:inputType="text"
                 android:maxLength="1"
                 android:importantForAutofill="no"
                 android:minHeight="48dp"
@@ -432,7 +432,7 @@ Replace the entire contents of `activity_main.xml` with:
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="12dp"
-                android:gravity="center">
+                android:weightSum="3">
 
                 <Button
                     android:id="@+id/btnPush"
@@ -440,8 +440,8 @@ Replace the entire contents of `activity_main.xml` with:
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Push"
-                    android:textSize="16sp"
-                    android:layout_marginEnd="4dp" />
+                    android:textSize="14sp"
+                    android:layout_marginEnd="8dp" />
 
                 <Button
                     android:id="@+id/btnPop"
@@ -449,7 +449,7 @@ Replace the entire contents of `activity_main.xml` with:
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Pop"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp" />
 
@@ -459,8 +459,8 @@ Replace the entire contents of `activity_main.xml` with:
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Quit"
-                    android:textSize="16sp"
-                    android:layout_marginStart="4dp" />
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -1203,7 +1203,7 @@ android:background="#FFF9C4"     <!-- Warning/Message background -->
 android:minHeight="48dp"
 
 <!-- Material Input Fields -->
-android:inputType="number"
+android:inputType="text"
 android:maxLength="1"
 android:hint="Enter value (0-9)"
 ```
